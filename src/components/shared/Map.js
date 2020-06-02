@@ -35,33 +35,33 @@ const Map = props => {
     if (props.zipcode !== "") {
       getGeocode();
     }
-  }, [props.zipcode]);
+  }); // removed , [props.zipcode] dependency
 
   useEffect(() => {
-    let options = {
-      center: { lat: mapDetails.lat, lng: mapDetails.lng },
-      zoom: mapDetails.isDefault ? 11 : 5,
-      zoomControl: false,
-      gestureHandling: "none"
-    };
-    const map = new window.google.maps.Map(
-      document.getElementById("map"),
-      options
-    );
+    // let options = {
+    //   center: { lat: mapDetails.lat, lng: mapDetails.lng },
+    //   zoom: mapDetails.isDefault ? 11 : 5,
+    //   zoomControl: false,
+    //   gestureHandling: "none"
+    // };
+    // const map = new window.google.maps.Map(
+    //   document.getElementById("map"),
+    //   options
+    // );
 
     if (mapDetails.isDefault) {
-      let cityCircle = new window.google.maps.Circle({
-        strokeColor: "#B706F5",
-        strokeOpacity: 0.6,
-        strokeWeight: 2,
-        fillColor: "#B706F5",
-        fillOpacity: 0.1,
-        map: map,
-        center: { lat: mapDetails.lat, lng: mapDetails.lng },
-        radius: props.radius
-      });
+      // let cityCircle = new window.google.maps.Circle({
+      //   strokeColor: "#B706F5",
+      //   strokeOpacity: 0.6,
+      //   strokeWeight: 2,
+      //   fillColor: "#B706F5",
+      //   fillOpacity: 0.1,
+      //   map: map,
+      //   center: { lat: mapDetails.lat, lng: mapDetails.lng },
+      //   radius: props.radius
+      // });
     }
-  }, [mapDetails]);
+  }); // removed , [mapDetails] dependency
   return <div id="map" />;
 };
 

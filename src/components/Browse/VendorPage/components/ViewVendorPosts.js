@@ -40,7 +40,7 @@ const ViewVendorPosts = (props) => {
 
 	useEffect(() => {
 		getVendorPosts(props.vendorId);
-	}, []);
+	}); // removed [] dependency
 
 	return (
 		<div className={profile.bulletin_container}>

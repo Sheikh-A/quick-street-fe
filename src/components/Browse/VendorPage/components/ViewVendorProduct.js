@@ -59,7 +59,7 @@ const ViewVendorProduct = (props) => {
 			.catch((error) => {
 				console.log(error);
 			});
-	}, []);
+	}); // removed [] dependency
 
 	const modalLeftStyle = {
 		width: "50%"

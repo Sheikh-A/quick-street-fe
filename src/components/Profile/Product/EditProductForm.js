@@ -4,10 +4,10 @@ import axiosWithAuth from '../../../utils/axiosWithAuth';
 
 const EditProductForm = (props) => {
 
-  const { product, setProduct, submitProductDetails, setEditingDetails, showEditProduct, reloadProducts, setReloadProducts } = props;
+  const { product, setProduct, submitProductDetails, setEditingDetails } = props; // removed , showEditProduct, reloadProducts, setReloadProducts
   // this state is for pre selecting checkboxes
   const [dietsOnFile, setDietsOnFile] = useState([]);
-  const [unitOnFile, setUnitOnFile] = useState([]);
+  // const [unitOnFile, setUnitOnFile] = useState([]);
   console.log('product.diet: ', product.diet);
   console.log('dietsOnFile', dietsOnFile);
 

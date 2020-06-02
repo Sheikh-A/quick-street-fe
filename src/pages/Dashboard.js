@@ -27,7 +27,7 @@ const Dashboard = (props) => {
 
 	useEffect(() => {
 		getVendorBannerId(user_id);
-	}, []);
+	}); // removed [] dependency
 
 	// if
 	// return Vendor components

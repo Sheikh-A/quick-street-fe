@@ -18,7 +18,7 @@ const Product = ({ name, img, price, productId, setReloadProducts, reloadProduct
 			.catch(error => {
 				console.log(`ERROR GET /:productId/product-images Product.js`, error);
 			})
-	}, [setReloadProducts, reloadProducts]);
+	}); // removed this dependency , [setReloadProducts, reloadProducts]
 	console.log(productImages[0]);
 	return (
 		<div className={product.vendor_product}>

@@ -1,31 +1,31 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react'; // removed useState
 import { Link } from 'react-router-dom';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
-import Avatar from '@material-ui/core/Avatar';
+// import Avatar from '@material-ui/core/Avatar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
+// import Typography from '@material-ui/core/Typography';
+// import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
+// import MenuIcon from '@material-ui/icons/Menu';
+// import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
+// import MailIcon from '@material-ui/icons/Mail';
+// import NotificationsIcon from '@material-ui/icons/Notifications';
+// import MoreIcon from '@material-ui/icons/MoreVert';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import Button from '@material-ui/core/Button';
+// import Divider from '@material-ui/core/Divider';
+// import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Context as AuthContext } from '../../contexts/AuthContext.js';
 import { Context as CartContext } from '../../contexts/TestCartContext';
-import Modal from './Modal';
+// import Modal from './Modal';
 import ShoppingCartItems from './ShoppingCart/ShoppingCartItems';
 import Drawer from '@material-ui/core/Drawer';
-import { shopping_cart_light } from '../../assets/svgs/index';
+// import { shopping_cart_light } from '../../assets/svgs/index';
 import { CustomButton } from '../index';
 import logo from '../../assets/images/landing/logo.png';
 
@@ -143,7 +143,7 @@ const Nav = () => {
 	console.log('Customer ID', customerId);
 	useEffect(() => {
 		getCartItems(customerId);
-	}, []);
+	}); // removed [] dependency
 	console.log('State Items', state);
 	const toggleDrawer = (side, open) => (event) => {
 		if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -164,9 +164,9 @@ const Nav = () => {
 		setAnchorEl(null);
 		handleMobileMenuClose();
 	};
-	const handleMobileMenuOpen = (event) => {
-		setMobileMoreAnchorEl(event.currentTarget);
-	};
+	// const handleMobileMenuOpen = (event) => {
+	// 	setMobileMoreAnchorEl(event.currentTarget);
+	// };
 	const menuId = 'primary-search-account-menu';
 	const renderMenu = (
 		<Menu
@@ -258,7 +258,7 @@ const Nav = () => {
 				}}
 			>
 				<Toolbar>
-					<img src={logo} style={{ height: '45px', width: '45px' }} />
+					<img src={logo} style={{ height: '45px', width: '45px' }} alt="needs meaningful text"/>
 					<div className={classes.grow} />
 					<div className={classes.sectionDesktop}>
 						{!token && (

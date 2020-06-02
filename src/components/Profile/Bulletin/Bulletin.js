@@ -41,7 +41,7 @@ const Bulletin = (props) => {
 			// console.log(res.data.data);
 			setPosts(res.data.data);
 		});
-	}, []);
+	}); // removed [] dependency
 
 	return (
 		<div className={`${profile.wrapper} ${bulletin.bulletin_wrapper}`}>

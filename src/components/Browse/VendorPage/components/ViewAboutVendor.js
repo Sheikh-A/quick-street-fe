@@ -26,7 +26,7 @@ const ViewAboutVendor = (props) => {
 
 	useEffect(() => {
 		getVendor(props.vendorId);
-	}, []);
+	}); // removed [] dependency
 
 	return (
 		<>

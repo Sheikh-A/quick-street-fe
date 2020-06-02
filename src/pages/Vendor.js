@@ -1,16 +1,14 @@
 // ** Vendor customer facing page ** //
 
-import React, { useState, useEffect, useContext } from 'react';
+import React, {  } from 'react';
 import {
 	ViewAboutVendor,
 	ViewVendorProducts,
 	ViewVendorPosts,
 	Footer,
-	ShoppingCartItems,
-	Modal,
 	Nav
-} from '../components/index';
-import axiosWithAuth from '../utils/axiosWithAuth';
+} from '../components/index'; // removed ShoppingCartItems, Modal,
+// import axiosWithAuth from '../utils/axiosWithAuth';
 import '../styles/scss/OldcustomerFacingVendorProfile.scss';
 
 // stlyes
@@ -18,7 +16,7 @@ import browse from '../styles/scss/browse.module.scss';
 
 const Vendor = (props) => {
 	const vendorId = props.match.params.id;
-	const [ cartModal, setCartModal ] = useState(false);
+	// const [ cartModal, setCartModal ] = useState(false);
 
 	return (
 		<React.Fragment>
