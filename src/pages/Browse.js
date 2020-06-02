@@ -1,8 +1,8 @@
 // ** Browse lists of vendors page ** //
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState } from 'react'; // removed useEffect as it is not being used below
 import axiosWithAuth from '../utils/axiosWithAuth';
 // components
-import { Map, Search, Menu, ShoppingCartItems, Modal, Nav, Footer, CustomButton } from '../components/index';
+import { Map, Search, Nav, Footer, CustomButton } from '../components/index'; // removed Menu, ShoppingCartItems, Modal
 
 // styles
 import browse from '../styles/scss/browse.module.scss';
@@ -64,14 +64,15 @@ const Browse = (props) => {
 			});
 	};
 
-	useEffect(() => {
-		const query = new URLSearchParams(props.location.search);
-		const zip = query.get('zip');
-		if (zip) {
-			setCustomerZip(zip);
-			getSearchResults(zip);
-		}
-	}, []);
+	// useEffect(() => {
+	// 	const query = new URLSearchParams(props.location.search);
+	// 	const zip = query.get('zip');
+	// 	if (zip) {
+	// 		setCustomerZip(zip);
+	// 		getSearchResults(zip);
+	// 	}
+	// }); 
+	// removed [] dependency
 
 	return (
 		<React.Fragment>

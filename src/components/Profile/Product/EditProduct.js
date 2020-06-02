@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Image, CloudinaryContext, Transformation } from 'cloudinary-react';
 import axiosWithAuth from '../../../utils/axiosWithAuth';
 import editingProduct from '../../../styles/scss/vendor/editingProduct.module.scss';
-import modal from '../../../styles/scss/browseModal.module.scss';
+// import modal from '../../../styles/scss/browseModal.module.scss';
 import { EditProductForm, ProductImageUploader } from '../../index';
-import { Modal } from '../../index';
+// import { Modal } from '../../index';
 const EditProduct = (props) => {
   const { setReloadProducts, reloadProducts, showEditProduct } = props;
   const [images, setImages] = useState([]);
@@ -26,7 +26,7 @@ const EditProduct = (props) => {
   useEffect(() => {
     //console.log('USEEFFECT 4 EditProducts.js GET /products/:prodcutId')
     // loading images popup on (off in next useEffect)
-    setLoadingImages(true);
+    // setLoadingImages(true);
     // get product (details)
     axiosWithAuth()
       /* ${props.product_id} */
@@ -39,7 +39,7 @@ const EditProduct = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }); // removed , [] dependency
 
   useEffect(
     () => {
@@ -56,9 +56,8 @@ const EditProduct = (props) => {
         .catch((error) => {
           console.log(error);
         });
-    },
-    [reloadingImages]
-  );
+    }
+  ); // removed ,  [reloadingImages] dependency
 
   const delHover = (imgId, span, inOut) => {
     if (inOut === 'in') {

@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 
-import axiosWithAuth from '../utils/axiosWithAuth';
+// import axiosWithAuth from '../utils/axiosWithAuth';
 import { OrderReviewItem } from '../components/index';
 import { Context as CartContext } from '../contexts/TestCartContext';
 import review from '../styles/scss/review.module.scss';
@@ -17,7 +17,7 @@ const OrderReview = (props) => {
 
 	useEffect(() => {
 		getCartItems(customerId);
-	}, []);
+	}); // removed [] dependency
 
 	return (
 		<React.Fragment>

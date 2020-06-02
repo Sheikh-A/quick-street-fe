@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import {Context as CartContext} from '../../../contexts/TestCartContext';
 import {ShoppingCartItem} from '../../index';
 
@@ -11,7 +11,7 @@ const ShoppingCartItems = ({ setCartModal }) => {
 
   useEffect(() => {
     getCartItems(customerId);
-  }, [])
+  }) // removed [] dependency
 
   return (
     <React.Fragment>

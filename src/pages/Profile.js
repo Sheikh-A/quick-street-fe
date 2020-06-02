@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   About,
   VendorProducts,
   Bulletin,
   BannerUploader,
   Nav
-} from '../components/index';
-import { Placeholder } from '../assets/images/index';
+} from "../components/index";
+import { Placeholder } from "../assets/images/index";
 //Styles
-import profile from '../styles/scss/vendor/a_vendors_profile.module.scss';
-import banner from '../styles/scss/vendor/a_vendors_banner.module.scss';
+import profile from "../styles/scss/vendor/a_vendors_profile.module.scss";
+import banner from "../styles/scss/vendor/a_vendors_banner.module.scss";
 //Font awesom
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSave, faPen } from '@fortawesome/free-solid-svg-icons';
-import { Image, CloudinaryContext, Transformation } from 'cloudinary-react';
-import axiosWithAuth from '../utils/axiosWithAuth';
-import Footer from '../components/shared/Footer';
-import browse from '../styles/scss/browse.module.scss';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faSave, faPen } from '@fortawesome/free-solid-svg-icons';
+import { Image, CloudinaryContext, Transformation } from "cloudinary-react";
+import axiosWithAuth from "../utils/axiosWithAuth";
+import Footer from "../components/shared/Footer";
+import browse from "../styles/scss/browse.module.scss";
 
 const Profile = props => {
   // It all starts here!...with vendorId from localStorage
-  const [vendorId, setVendorId] = useState(localStorage.getItem('user_id'));
+  const [vendorId] = useState(localStorage.getItem("user_id")); // removed setVendorId from const
   const [vendorInfo, setVendorInfo] = useState({
     location: {
-      zipcode: '18641'
+      zipcode: "18641"
     }
   });
-  const [bannerInfo, setBannerInfo] = useState('no_banner.jpg');
+  const [bannerInfo, setBannerInfo] = useState("no_banner.jpg");
   const [products, setProducts] = useState([]);
-  const [productImagesIds, setProductImagesIds] = useState([]);
+  // const [productImagesIds, setProductImagesIds] = useState([]);
 
   // Booleans
 
@@ -36,7 +36,7 @@ const Profile = props => {
   // bool for reloading products after product update.
   const [reloadProducts, setReloadProducts] = useState(false);
   const [editAbout, setEditAbout] = useState(false);
-  const [editBusinessName, setEditBusinessName] = useState(false);
+  // const [editBusinessName, setEditBusinessName] = useState(false);
   //console.log('Profile.js vendorInfo: ', vendorInfo);
 
   useEffect(() => {
@@ -47,12 +47,12 @@ const Profile = props => {
         setVendorInfo(response.data.data);
         /* setBannerInfo(vendorInfo.data.data.vendor_banner); */
         console.log(
-          'GET useEffect Profile.js setVendorInfo(response)',
+          "GET useEffect Profile.js setVendorInfo(response)",
           response
         );
       })
       .catch(error => {
-        console.log('ERROR Profile.js GET vendors/:vendorId error: ', error);
+        console.log("ERROR Profile.js GET vendors/:vendorId error: ", error);
       });
   }, [vendorId]);
 
@@ -62,22 +62,22 @@ const Profile = props => {
       .get(`/vendors/${vendorId}/products`)
       .then(response => {
         console.log(
-          'GET Profile.js /vendors/:vendorId/products response',
+          "GET Profile.js /vendors/:vendorId/products response",
           response
         );
         setProducts(response.data.data);
       })
       .catch(error => {
         console.log(
-          'ERROR Profile.js GET fetchProducts() vendors/:vendorId/products error: ',
+          "ERROR Profile.js GET fetchProducts() vendors/:vendorId/products error: ",
           error
         );
       });
   }, [vendorId, reloadProducts, setReloadProducts]);
 
-  const editName = () => {
-    setEditBusinessName(!editBusinessName);
-  };
+  // const editName = () => {
+  //   setEditBusinessName(!editBusinessName);
+  // };
 
   const saveName = () => {
     axiosWithAuth()
@@ -90,7 +90,7 @@ const Profile = props => {
         setVendorInfo(res.data.data);
       })
       .catch(err => {
-        console.log('ERROR PUT SAVE NAME', err);
+        console.log("ERROR PUT SAVE NAME", err);
       });
   };
 
@@ -115,13 +115,13 @@ const Profile = props => {
         setVendorInfo(res.data.data);
       })
       .catch(err => {
-        console.log('VendorProf. PUT error ', err);
+        console.log("VendorProf. PUT error ", err);
       });
   };
 
   return (
     <React.Fragment>
-      <div style={{ backgroundColor: '#00B2ED' }} className={browse.temp_menu}>
+      <div style={{ backgroundColor: "#00B2ED" }} className={browse.temp_menu}>
         <Nav />
       </div>
       <div className={profile.profile_container}>
@@ -150,14 +150,14 @@ const Profile = props => {
                       onClick={() => {
                         setEditingName(false);
                         saveName();
-                        console.log('CLICKED');
+                        console.log("CLICKED");
                       }}
                     >
                       <p className={`${banner.save_changes}`}>
-                        <i className='fa fa-save'></i>&nbsp; save
+                        <i className="fa fa-save"></i>&nbsp; save
                       </p>
                     </div>
-                    </React.Fragment>
+                  </React.Fragment>
                 ) : (
                   //<<<<<<< TURNARY input name or p tag
                   <h1
@@ -172,24 +172,24 @@ const Profile = props => {
 
             <div className={banner.vendor_banner_image_container}>
               {vendorInfo.vendor_banner !== `no-photo.jpg` ? (
-                <CloudinaryContext cloudName='quickstlabs'>
+                <CloudinaryContext cloudName="quickstlabs">
                   <Image
                     className={banner.vendor_banner_image}
                     publicId={vendorInfo.vendor_banner}
                   >
                     <Transformation
-                      gravity='center'
-                      height='500'
-                      width='1800'
-                      crop='fill'
+                      gravity="center"
+                      height="500"
+                      width="1800"
+                      crop="fill"
                     />
                   </Image>
                 </CloudinaryContext>
               ) : (
                 <img
-                  className='vendor_banner_image'
+                  className="vendor_banner_image"
                   src={Placeholder}
-                  alt='vendor header'
+                  alt="vendor header"
                 />
               )}
 
@@ -215,7 +215,7 @@ const Profile = props => {
         <VendorProducts
           setReloadProducts={setReloadProducts}
           reloadProducts={reloadProducts}
-          reloadProducts={reloadProducts}
+          // reloadProducts={reloadProducts}
           products={products}
           vendorId={vendorInfo._id}
         />

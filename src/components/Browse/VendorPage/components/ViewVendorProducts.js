@@ -1,49 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import axiosWithAuth from '../../../../utils/axiosWithAuth';
-import Product from './ViewVendorProduct';
+import axiosWithAuth from "../../../../utils/axiosWithAuth";
+import Product from "./ViewVendorProduct";
 //styling
-import profile from '../../../../styles/scss/profile.module.scss';
-const ViewVendorProducts = (props) => {
-	const [vendorProducts, setVendorProducts] = useState({
-		products: [],
-		count: 0
-	});
-	const { cart, setCart } = props;
+import profile from "../../../../styles/scss/profile.module.scss";
+const ViewVendorProducts = props => {
+  const [vendorProducts, setVendorProducts] = useState({
+    products: [],
+    count: 0
+  });
+  // const { cart, setCart } = props;
 
-	const getVendorProducts = (id) => {
-		axiosWithAuth()
-			.get(`/vendors/${id}/products`)
-			.then((response) => {
-				// console.log(response);
-				setVendorProducts({
-					...vendorProducts,
-					products: response.data.data,
-					count: response.data.count
-				});
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	};
+  const getVendorProducts = id => {
+    axiosWithAuth()
+      .get(`/vendors/${id}/products`)
+      .then(response => {
+        // console.log(response);
+        setVendorProducts({
+          ...vendorProducts,
+          products: response.data.data,
+          count: response.data.count
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
-	useEffect(() => {
-		getVendorProducts(props.vendorId);
-	}, []);
+  useEffect(() => {
+    getVendorProducts(props.vendorId);
+  }); // removed [] dependency
 
-	return (
-		<div className={profile.products_container}>
-			<div className={profile.products_wrapper}>
-				<h1>Products</h1>
-				<div className={profile.products_card_wrapper}>
-					{vendorProducts.products.map((product) => <Product product={product} key={product._id} vendorId={props.vendorId} />)}
-					{vendorProducts.count === 0 && (
-						<p className="no_products_content">There are no products to show right now.</p>
-					)}
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className={profile.products_container}>
+      <div className={profile.products_wrapper}>
+        <h1>Products</h1>
+        <div className={profile.products_card_wrapper}>
+          {vendorProducts.products.map(product => (
+            <Product
+              product={product}
+              key={product._id}
+              vendorId={props.vendorId}
+            />
+          ))}
+          {vendorProducts.count === 0 && (
+            <p className="no_products_content">
+              There are no products to show right now.
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ViewVendorProducts;

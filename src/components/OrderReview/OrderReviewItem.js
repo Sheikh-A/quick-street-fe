@@ -44,7 +44,7 @@ const OrderReviewItem = ({ product }) => {
 			.catch((error) => {
 				console.log(error);
 			});
-	}, []);
+	}); // removed [] dependency
 
 	return (
 		<React.Fragment>
